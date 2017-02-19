@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="easyxdm.js" type="text/javascript"></script>
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+</head>
+<body style="overflow: hidden; margin: 0px; padding: 0px;">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+
+        var match,
+                    pattern = /\+/g,
+                    search = /([^&=]+)=?([^&]*)/g,
+                    decode = function (s) { return decodeURIComponent(s.replace(pattern, " ")); },
+                    query = window.location.search.substring(1);
+
+        params = {};
+        while (match = search.exec(query))
+            params[decode(match[1])] = decode(match[2]);
+
+        var disqus_url = params["disqus_url"];
+        var disqus_title = params["disqus_title"];
+        var disqus_shortname = params["disqus_shortname"];
+        var disqus_identifier = params["disqus_identifier"];
+
+        /* Initialize Disqus */
+        (function () {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+            //dsq.src = 'disqusembed.js';
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+
+        /* Frame resizing */
+        var socket = new easyXDM.Socket({
+            onReady: function () {
+                setInterval(function () {
+                    socket.postMessage(document.body.scrollHeight);
+                }, 300);
+            }
+        });
+
+    </script></p>
+</body>
+</html>

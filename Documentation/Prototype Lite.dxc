@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentFile Version="2010" Moniker="&lt;Database Name=&quot;Prototype Lite&quot; DatabaseType=&quot;SqlServer&quot;&gt;&#xD;&#xA;  &lt;UserName&gt;&lt;/UserName&gt;&#xD;&#xA;  &lt;ServerInstance&gt;hq-dev-sql-01.hotquant.com&lt;/ServerInstance&gt;&#xD;&#xA;  &lt;Database&gt;prototype_lite&lt;/Database&gt;&#xD;&#xA;  &lt;SqlServerAuthenticationMode&gt;WindowsIntegrated&lt;/SqlServerAuthenticationMode&gt;&#xD;&#xA;&lt;/Database&gt;" DocType="DX.DB" IsLocalizationDisabled="false">
+  <RelatedProject>Documentation.dxp</RelatedProject>
+  <State>
+    <Attributes>
+      <Attribute key="scrollPosition" valuetype="integer">0</Attribute>
+    </Attributes>
+  </State>
+  <LastSelectedItem>Prototype Lite_db</LastSelectedItem>
+  <item qn="Prototype Lite_db">
+    <summary ChangeDateTime="2017-02-19T04:12:48.6489574Z">&lt;P&gt;PrototypeLite is an open-source repository of database machinery that HotQuant has elected to release to the public. Generally each schema below is devoted to a package of functionality.&lt;/P&gt;
+&lt;P&gt;Wish there were more content here? There will be. HotQuant has only just begun releasing this stuff, and there's plenty more to come.&lt;/P&gt;
+&lt;P&gt;Some useful links:&lt;/P&gt;&lt;A href="https://github.com/HotQuant/PrototypeLite"&gt;&lt;/A&gt;
+&lt;UL&gt;
+&lt;LI&gt;&lt;A href="https://github.com/HotQuant/PrototypeLite"&gt;PrototypeLite on GitHub&lt;/A&gt;&amp;nbsp;(go here to download scripts) 
+&lt;LI&gt;&lt;A href="www.hotquant.com"&gt;HotQuant's home page&lt;/A&gt; &lt;/LI&gt;&lt;/UL&gt;
+&lt;P&gt;&amp;nbsp;&lt;/P&gt;</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core">
+    <summary ChangeDateTime="2017-02-19T02:47:35.3964293Z">Common utility objects leveraged by all other schemas.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon">
+    <summary ChangeDateTime="2017-02-19T03:52:52.5516574Z">&lt;P&gt;A simple data reconciliation engine. To use:&lt;/P&gt;
+&lt;UL&gt;
+&lt;LI&gt;Populate&amp;nbsp;&lt;A href="Prototype Lite_db~s-hq_Recon~t-t_Map.html"&gt;t_Map&lt;/A&gt; with database objects to be reconciled and associated column mappings.
+&lt;LI&gt;Execute&amp;nbsp;&lt;A href="Prototype Lite_db~s-hq_Recon~p-usp_Execute.html"&gt;usp_Execute&lt;/A&gt; against the reconciliation targets.
+&lt;LI&gt;Read any reconciliation breaks from&amp;nbsp;&lt;A href="Prototype Lite_db~s-hq_Recon~v-v_Break.html"&gt;v_Break&lt;/A&gt;.&lt;/LI&gt;&lt;/UL&gt;</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~p-usp_PrintTrace">
+    <summary ChangeDateTime="2017-02-19T03:02:51.5759868Z">&lt;P&gt;Tabulates execution stages at run time on the Messages pane in SSMS.&lt;/P&gt;</summary>
+    <remarks ChangeDateTime="2017-02-19T03:02:51.5829616Z">Here's how to use it... &lt;innovasys:widget type="Colorized Example Code Section" layout="block"&gt;&lt;innovasys:widgetproperty layout="inline" name="LanguageName"&gt;SQL&lt;/innovasys:widgetproperty&gt; &lt;innovasys:widgetproperty layout="block" name="Content"&gt;
+&lt;P&gt;EXEC hq_Core.usp_PrintTrace&lt;/P&gt;
+&lt;P&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; @Msg = 'Starting execution',&lt;/P&gt;
+&lt;P&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; @TraceStart = GETDATE() OUT&lt;/P&gt;&lt;/innovasys:widgetproperty&gt;&lt;/innovasys:widget&gt;</remarks>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~p-usp_PrintTrace~a-@Msg">
+    <param ChangeDateTime="2017-02-19T02:55:38.9312918Z">The message to be displayed.</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~p-usp_PrintTrace~a-@MsgLen">
+    <param ChangeDateTime="2017-02-19T02:55:38.9312918Z">Max message length (for column alignment).</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~p-usp_PrintTrace~a-@TimeLen">
+    <param ChangeDateTime="2017-02-19T02:55:38.9312918Z">Max time length (for column alignment).</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~p-usp_PrintTrace~a-@TraceStart">
+    <param ChangeDateTime="2017-02-19T02:55:38.9692674Z">&lt;P&gt;IN: Start time of the previous stage.&lt;/P&gt;
+&lt;P&gt;OUT: Start time of the current stage.&lt;/P&gt;</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~p-usp_PrintTrace~a-@RETURN_VALUE">
+    <param ChangeDateTime="2017-02-19T02:55:38.9692674Z">Standard return value.</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_ComposeDatatype">
+    <summary ChangeDateTime="2017-02-19T03:07:27.6195776Z">Composes a literal SQL datatype from column information returned by INFORMATION_SCHEMA.COLUMNS.</summary>
+    <returns ChangeDateTime="2017-02-19T03:07:27.6635661Z">A literal SQL datatyle. Ex: &lt;STRONG&gt;varchar(128)&lt;/STRONG&gt;</returns>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_ComposeDatatype~a-@DATA_TYPE">
+    <param ChangeDateTime="2017-02-19T03:07:27.6215774Z">INFORMATION_SCHEMA.COLUMNS.DATA_TYPE</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_ComposeDatatype~a-@CHARACTER_MAXIMUM_LENGTH">
+    <param ChangeDateTime="2017-02-19T03:07:27.6215774Z">INFORMATION_SCHEMA.COLUMNS.CHARACTER_MAXIMUM_LENGTH</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_ComposeDatatype~a-@NUMERIC_PRECISION">
+    <param ChangeDateTime="2017-02-19T03:07:27.6215774Z">INFORMATION_SCHEMA.COLUMNS.NUMERIC_PRECISION</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_ComposeDatatype~a-@NUMERIC_SCALE">
+    <param ChangeDateTime="2017-02-19T03:07:27.6215774Z">INFORMATION_SCHEMA.COLUMNS.NUMERIC_SCALE</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_Rows">
+    <summary ChangeDateTime="2017-02-19T03:11:22.1553032Z">Returns an ordinal-numbered,&amp;nbsp;single-column rowset of a specified length.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_Rows~a-@n">
+    <param ChangeDateTime="2017-02-19T03:11:22.1553032Z">Number of rows to return.</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_Split_CamelCase">
+    <summary ChangeDateTime="2017-02-19T03:11:22.1553032Z">Returns a rowset containing the individual tokens of a camel case string.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_Split_DbObjName">
+    <summary ChangeDateTime="2017-02-19T03:12:43.4285907Z">Extracts tokens from a string representing a DB object name using underscores and case changes as delimiters.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_Split_Delimiter">
+    <summary ChangeDateTime="2017-02-19T03:11:22.1553032Z">Returns a rowset containing the individual tokens of a delimited string.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~p-usp_TestGenerate">
+    <summary ChangeDateTime="2017-02-19T03:11:22.1553032Z">Generates a rowset of test data for the Recon module.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~p-usp_TestReset">
+    <summary ChangeDateTime="2017-02-19T03:11:22.1553032Z">Resets the Recon module with fresh test data.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_Split_CamelCase~a-@String">
+    <param ChangeDateTime="2017-02-19T03:12:00.1695858Z">The string to be parsed.</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_Split_DbObjName~a-@String">
+    <param ChangeDateTime="2017-02-19T03:12:43.4285907Z">The string to be parsed.</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_Split_Delimiter~a-@String">
+    <param ChangeDateTime="2017-02-19T03:13:06.9849815Z">The string to be parsed.</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Core~f-tvf_Split_Delimiter~a-@Delimiter">
+    <param ChangeDateTime="2017-02-19T03:13:06.9849815Z">The delimiter string.</param>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Break">
+    <summary ChangeDateTime="2017-02-19T03:29:55.922774Z">The table that receives reconciliation breaks.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Map">
+    <summary ChangeDateTime="2017-02-19T03:29:55.922774Z">A mapping table relating reconciliation columns and indicating whether a given column should be reconciled.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_TestLeft">
+    <summary ChangeDateTime="2017-02-19T03:38:43.2077478Z">A table of typed test data for demonstration of the Recon module.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_TestRight">
+    <summary ChangeDateTime="2017-02-19T03:39:01.9029042Z">A table of text test data for demonstraction of the Recon module.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4810206Z">A view over t_Break providing extra contextual information. Note that this view contains only reconciliation breaks.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~p-usp_Execute">
+    <summary ChangeDateTime="2017-02-19T03:29:55.922774Z">Executes reconciliation against a designated pair of tables or views.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Break~c-RowKey">
+    <summary ChangeDateTime="2017-02-19T03:34:45.9088563Z">A delimited string containing the components of the reconciled tables' mutual key.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Break~c-MapId">
+    <summary ChangeDateTime="2017-02-19T03:34:45.9108341Z">A pointer to the mapping table identifying a particular table column.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Break~c-LeftRowExists">
+    <summary ChangeDateTime="2017-02-19T03:34:45.9108341Z">True if RowKey is represented in the Left table.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Break~c-LeftValue">
+    <summary ChangeDateTime="2017-02-19T03:34:45.9108341Z">A string conversion of the Left table value for the given RowKey and column.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Break~c-RightRowExists">
+    <summary ChangeDateTime="2017-02-19T03:34:45.9108341Z">True if RowKey is represented in the Right table.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Break~c-RightValue">
+    <summary ChangeDateTime="2017-02-19T03:34:45.9108341Z">A string conversion of the Right table value for the given RowKey and column.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Map~c-MapId">
+    <summary ChangeDateTime="2017-02-19T03:38:19.2912851Z">Identity key.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Map~c-LeftObjSchema">
+    <summary ChangeDateTime="2017-02-19T03:38:19.2912851Z">Schema of Left reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Map~c-LeftObjName">
+    <summary ChangeDateTime="2017-02-19T03:38:19.2912851Z">Name of Left reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Map~c-LeftColName">
+    <summary ChangeDateTime="2017-02-19T03:38:19.2922834Z">Name of Left reconciliation column.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Map~c-RightObjSchema">
+    <summary ChangeDateTime="2017-02-19T03:38:19.2922834Z">Schema of Right reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Map~c-RightObjName">
+    <summary ChangeDateTime="2017-02-19T03:38:19.2922834Z">Name of Right reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Map~c-RightColName">
+    <summary ChangeDateTime="2017-02-19T03:38:19.2922834Z">Name of Left reconciliation column.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Map~c-KeyCol">
+    <summary ChangeDateTime="2017-02-19T03:38:19.2922834Z">Indicates whether column is a primary key element. Only necessary if reconciling two views or tables with no PK defined.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~t-t_Map~c-Reconcile">
+    <summary ChangeDateTime="2017-02-19T03:38:19.2922834Z">Indicates whether the column should participate in reconciliations.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-RowKey">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4810206Z">A delimited string composed of the reconciled tables' key components.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-LeftObjSchema">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4810206Z">The database schema of the Left reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-LeftObjName">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4810206Z">The name of the Left reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-LeftColName">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4810206Z">The name of the matched column on the Left reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-LeftDataType">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4810206Z">A literal representation of the matched column data type on the Left reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-LeftValue">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4810206Z">The value of the matched column and row on the Left reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-LeftRowExists">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4810206Z">Indicates whether RowKey exists on the Left reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-RightObjSchema">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4810206Z">The database schema of the Right reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-RightObjName">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4820208Z">The name of the Right reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-RightColName">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4820208Z">The name of the matched column on the Right reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-RightDataType">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4820208Z">A literal representation of the matched column data type on the Right reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-RightValue">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4820208Z">The value of the matched column and row on the Right reconciliation object.</summary>
+  </item>
+  <item qn="Prototype Lite_db~s-hq_Recon~v-v_Break~c-RightRowExists">
+    <summary ChangeDateTime="2017-02-19T03:45:04.4820208Z">Indicates whether RowKey exists on the Right reconciliation object.</summary>
+  </item>
+  <Filters>
+    <DX.DB>
+      <IsExtendedPropertyContentVisible>true</IsExtendedPropertyContentVisible>
+      <IsSourceCommentsVisible>true</IsSourceCommentsVisible>
+    </DX.DB>
+  </Filters>
+  <Filters>
+    <CONTENTSTORECOMMON>
+      <IsIncludedItemsOnly>true</IsIncludedItemsOnly>
+    </CONTENTSTORECOMMON>
+    <CONTENTSTORELOCALIZATION>
+      <IsPrimaryLocaleContentPreviewEnabled>true</IsPrimaryLocaleContentPreviewEnabled>
+    </CONTENTSTORELOCALIZATION>
+  </Filters>
+</ContentFile>

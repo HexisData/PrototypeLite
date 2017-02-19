@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AzureDeploymentTarget SiteName="hq-doc-prototypelite" PublishUrl="hq-doc-prototypelite.scm.azurewebsites.net:443" UserName="$hq-doc-prototypelite" Password="BEhGjI5mlPqVScF+JNNecKo12hgRAjPKlkH1ceeQ+pHvfoBmeEXbGQVJsibQuO0z3KWbnlw1r2U3V/pcW1VHdg==" RootPath="" Id="6fa0fac2-3036-46ce-a0a9-00ed855890f1" Name="Azure" IsIncrementalDeploymentEnabled="true" IsLocalePrefixEnabled="true" IsIncludedInBuildByDefault="true" Url="http://prototypelite.doc.hotquant.com" IsLogEnabled="false">
+  <ExcludedPublishingItemGroups />
+</AzureDeploymentTarget>
