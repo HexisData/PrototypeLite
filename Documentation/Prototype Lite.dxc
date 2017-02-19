@@ -3,10 +3,10 @@
   <RelatedProject>Documentation.dxp</RelatedProject>
   <State>
     <Attributes>
-      <Attribute key="scrollPosition" valuetype="integer">0</Attribute>
+      <Attribute key="scrollPosition" valuetype="integer">249</Attribute>
     </Attributes>
   </State>
-  <LastSelectedItem>Prototype Lite_db</LastSelectedItem>
+  <LastSelectedItem>Prototype Lite_db~s-hq_Recon~t-t_Break</LastSelectedItem>
   <item qn="Prototype Lite_db">
     <summary ChangeDateTime="2017-02-19T04:12:48.6489574Z">&lt;P&gt;PrototypeLite is an open-source repository of database machinery that HotQuant has elected to release to the public. Generally each schema below is devoted to a package of functionality.&lt;/P&gt;
 &lt;P&gt;Wish there were more content here? There will be. HotQuant has only just begun releasing this stuff, and there's plenty more to come.&lt;/P&gt;
@@ -117,7 +117,7 @@
     <summary ChangeDateTime="2017-02-19T03:29:55.922774Z">Executes reconciliation against a designated pair of tables or views.</summary>
   </item>
   <item qn="Prototype Lite_db~s-hq_Recon~t-t_Break~c-RowKey">
-    <summary ChangeDateTime="2017-02-19T03:34:45.9088563Z">A delimited string containing the components of the reconciled tables' mutual key.</summary>
+    <summary ChangeDateTime="2017-02-19T17:02:49.9079565Z">A delimited string containing the components of the reconciled tables' mutual key. Note that the size of this column is goverened by the 900-byte limit on SQL Server PKs. Needs to be as big as possible to accommodate large, complex keys.</summary>
   </item>
   <item qn="Prototype Lite_db~s-hq_Recon~t-t_Break~c-MapId">
     <summary ChangeDateTime="2017-02-19T03:34:45.9108341Z">A pointer to the mapping table identifying a particular table column.</summary>

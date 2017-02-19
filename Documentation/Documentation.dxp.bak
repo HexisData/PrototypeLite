@@ -157,13 +157,13 @@
         <PrivateServerAccessKey></PrivateServerAccessKey>
         <ProjectKey />
       </CommunityOptions>
-      <CommunityProjectProfilePlugin IsEnabled="false" ProviderFactory="DISQUS">
+      <CommunityProjectProfilePlugin IsEnabled="true" ProviderFactory="DISQUS">
         <IsCompiledHelpReadinessWarningDisabled>false</IsCompiledHelpReadinessWarningDisabled>
         <ProviderSettings>
           <IsAutomaticBaseUrlEnabled>true</IsAutomaticBaseUrlEnabled>
-          <AutomaticBaseUrlDeploymentTargetId></AutomaticBaseUrlDeploymentTargetId>
+          <AutomaticBaseUrlDeploymentTargetId>6fa0fac2-3036-46ce-a0a9-00ed855890f1</AutomaticBaseUrlDeploymentTargetId>
           <BaseUrl />
-          <DisqusForumName />
+          <DisqusForumName m="2017-02-19T03:58:21.1989713Z">prototypelite-documentation</DisqusForumName>
         </ProviderSettings>
       </CommunityProjectProfilePlugin>
       <DotNet>
