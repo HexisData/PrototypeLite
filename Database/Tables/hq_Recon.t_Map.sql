@@ -11,5 +11,5 @@ CREATE TABLE [hq_Recon].[t_Map]
 [Reconcile] [bit] NOT NULL CONSTRAINT [DF_t_Core_Mapping_Reconcile] DEFAULT ((0))
 ) ON [PRIMARY]
 GO
-ALTER TABLE [hq_Recon].[t_Map] ADD CONSTRAINT [PK_t_Core_Mapping] PRIMARY KEY CLUSTERED  ([MapId]) ON [PRIMARY]
+ALTER TABLE [hq_Recon].[t_Map] ADD CONSTRAINT [PK_t_Map] PRIMARY KEY CLUSTERED  ([MapId]) ON [PRIMARY]
 GO

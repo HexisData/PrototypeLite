@@ -8,5 +8,5 @@ CREATE TABLE [hq_Recon].[t_Break]
 [RightValue] [nvarchar] (max) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-ALTER TABLE [hq_Recon].[t_Break] ADD CONSTRAINT [PK_t_Core_ReconValue] PRIMARY KEY CLUSTERED  ([RowKey], [MapId]) ON [PRIMARY]
+ALTER TABLE [hq_Recon].[t_Break] ADD CONSTRAINT [PK_t_Break] PRIMARY KEY CLUSTERED  ([RowKey], [MapId]) ON [PRIMARY]
 GO
