@@ -1,0 +1,3 @@
+CREATE SCHEMA [hq_Recon]
+AUTHORIZATION [dbo]
+GO

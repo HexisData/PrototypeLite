@@ -1,4 +1,4 @@
-CREATE TABLE [hq].[t_Recon_TestRight]
+CREATE TABLE [hq_Recon].[t_TestRight]
 (
 [RightKey1] [datetime] NOT NULL,
 [RightKey2] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -12,5 +12,5 @@ CREATE TABLE [hq].[t_Recon_TestRight]
 [RightCol8NoMapping] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
 ) ON [PRIMARY]
 GO
-ALTER TABLE [hq].[t_Recon_TestRight] ADD CONSTRAINT [PK_t_Test_ReconRight] PRIMARY KEY CLUSTERED  ([RightKey1], [RightKey2]) ON [PRIMARY]
+ALTER TABLE [hq_Recon].[t_TestRight] ADD CONSTRAINT [PK_t_Test_ReconRight] PRIMARY KEY CLUSTERED  ([RightKey1], [RightKey2]) ON [PRIMARY]
 GO

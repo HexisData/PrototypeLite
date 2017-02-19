@@ -8,7 +8,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [hq].[usp_Core_PrintTrace] 
+CREATE PROCEDURE [hq_Core].[usp_PrintTrace] 
 	-- Add the parameters for the stored procedure here
     @Msg nvarchar(MAX),
     @MsgLen int = 30,

@@ -3,7 +3,7 @@ GO
 SET ANSI_NULLS ON
 GO
 
-CREATE PROCEDURE [hq].[usp_Recon_Execute] 
+CREATE PROCEDURE [hq_Recon].[usp_Execute] 
 	@LeftObjSchema NVARCHAR(128),
 	@LeftObjName NVARCHAR(128),
 	@RightObjSchema NVARCHAR(128),
@@ -23,7 +23,7 @@ BEGIN
 			C.*
 		FROM 
 			INFORMATION_SCHEMA.COLUMNS C
-			INNER JOIN hq.t_Recon_Map M ON 
+			INNER JOIN hq_Recon.t_Map M ON 
 				M.LeftObjSchema = C.TABLE_SCHEMA
 				AND M.LeftObjName = C.TABLE_NAME
 				AND M.LeftColName = C.COLUMN_NAME
@@ -40,7 +40,7 @@ BEGIN
 			C.*
 		FROM 
 			INFORMATION_SCHEMA.COLUMNS C
-			INNER JOIN hq.t_Recon_Map M ON 
+			INNER JOIN hq_Recon.t_Map M ON 
 				M.RightObjSchema = C.TABLE_SCHEMA
 				AND M.RightObjName = C.TABLE_NAME
 				AND M.RightColName = C.COLUMN_NAME
@@ -97,7 +97,7 @@ BEGIN
 	SET @RightKeyExp = STUFF(@RightKeyExp, 1, 8 + DATALENGTH(@KeyDelimiter) / 2, '')
 
 	-- Populate values.
-	TRUNCATE TABLE hq.t_Recon_Break
+	TRUNCATE TABLE hq_Recon.t_Break
 
 	DECLARE 
 		@n int = (SELECT MAX(i) FROM #ReconCols),
@@ -128,7 +128,7 @@ BEGIN
 			{MapId} AS MapId,
 			{LeftValueExp} AS Value
 		FROM
-			hq.t_Recon_TestLeft
+			hq_Recon.t_TestLeft
 	),
 
 	R AS (
@@ -137,10 +137,10 @@ BEGIN
 			{MapId} AS MapId,
 			{RightValueExp} AS Value
 		FROM
-			hq.t_Recon_TestRight
+			hq_Recon.t_TestRight
 	)
 
-	INSERT hq.t_Recon_Break
+	INSERT hq_Recon.t_Break
 	SELECT
 		ISNULL(L.RowKey, R.RowKey) AS RowKey,
 		ISNULL(L.MapId, R.MapId) AS MapId,

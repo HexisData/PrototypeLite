@@ -7,7 +7,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE FUNCTION [hq].[tvf_Core_ComposeDatatype] 
+CREATE FUNCTION [hq_Core].[tvf_ComposeDatatype] 
 (	
 	@DATA_TYPE nvarchar(128), 
 	@CHARACTER_MAXIMUM_LENGTH int,
