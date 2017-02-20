@@ -2,7 +2,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
-CREATE FUNCTION [hq_Core].[tvf_ComposeDatatype] 
+CREATE FUNCTION [hq].[tvf_Core_ComposeDatatype] 
 (	
 	@DATA_TYPE nvarchar(128), 
 	@CHARACTER_MAXIMUM_LENGTH int,

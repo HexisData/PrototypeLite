@@ -1,4 +1,4 @@
-CREATE TABLE [hq_Recon].[t_Map]
+CREATE TABLE [hq].[t_Recon_Map]
 (
 [MapId] [int] NOT NULL IDENTITY(1, 1),
 [LeftObjSchema] [nvarchar] (128) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -11,5 +11,5 @@ CREATE TABLE [hq_Recon].[t_Map]
 [Reconcile] [bit] NOT NULL CONSTRAINT [DF_t_Core_Mapping_Reconcile] DEFAULT ((0))
 ) ON [PRIMARY]
 GO
-ALTER TABLE [hq_Recon].[t_Map] ADD CONSTRAINT [PK_t_Map] PRIMARY KEY CLUSTERED  ([MapId]) ON [PRIMARY]
+ALTER TABLE [hq].[t_Recon_Map] ADD CONSTRAINT [PK_t_Recon_Map] PRIMARY KEY CLUSTERED  ([MapId]) ON [PRIMARY]
 GO

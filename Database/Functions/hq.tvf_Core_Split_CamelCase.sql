@@ -4,7 +4,7 @@ SET ANSI_NULLS ON
 GO
 
 
-CREATE FUNCTION [hq_Core].[tvf_Split_CamelCase]
+CREATE FUNCTION [hq].[tvf_Core_Split_CamelCase]
 (
    @String NVARCHAR(MAX)
 )
@@ -13,7 +13,7 @@ RETURN
 (
 	WITH Start(i) AS (
 		SELECT S.i 
-		FROM hq_Core.tvf_Rows(DATALENGTH(@String) / 2) S
+		FROM hq.tvf_Core_Rows(DATALENGTH(@String) / 2) S
 		WHERE 
 			S.i = 1
 			OR (

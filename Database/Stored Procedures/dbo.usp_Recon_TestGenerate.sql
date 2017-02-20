@@ -7,7 +7,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [hq_Recon].[usp_TestGenerate] 
+CREATE PROCEDURE [dbo].[usp_Recon_TestGenerate] 
 	@Rows int = 1000
 AS
 BEGIN
@@ -25,7 +25,7 @@ BEGIN
 		LEFT(NEWID(), 8) AS Col7NoReconcile,
 		LEFT(NEWID(), 8) AS Col8NoMapping
 	FROM
-		hq_Core.tvf_Rows(@Rows) R
+		hq.tvf_Core_Rows(@Rows) R
 END
 
 GO
