@@ -8,7 +8,7 @@ CREATE PROCEDURE [hq].[usp_Recon_Execute]
 	@LeftObjName NVARCHAR(128),
 	@RightObjSchema NVARCHAR(128),
 	@RightObjName NVARCHAR(128),
-	@KeyDelimiter nvarchar(MAX) = '|'
+	@KeyDelimiter nvarchar(128) = '|'
 AS
 BEGIN
 	SET NOCOUNT ON;
