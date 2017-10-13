@@ -14,7 +14,7 @@ RETURN
 	SELECT
 		COALESCE(C.Item, D.Item) AS Item
 	FROM
-		hq.tvf_Core_Split_Delimiter(@String, '_Core_') D
+		hq.tvf_Core_Split_Delimiter(@String, '_') D
 		OUTER APPLY (
 			SELECT Item 
 			FROM hq.tvf_Core_Split_CamelCase(D.Item)
