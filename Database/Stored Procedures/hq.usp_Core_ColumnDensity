@@ -1,0 +1,84 @@
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE hq.usp_Core_ColumnDensity 
+  @TableSchema NVARCHAR(128),
+	@TableName NVARCHAR(128),
+	@ColumnNamePattern NVARCHAR(128) = NULL
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	IF OBJECT_ID('tempdb..#Columns') IS NOT NULL
+	BEGIN
+		DROP TABLE #Columns
+	END;
+
+	SELECT COLUMN_NAME AS ColumnName,
+		ORDINAL_POSITION AS OrdPos,
+		CAST(NULL AS BIGINT) AS DistinctValues,
+		CAST(NULL AS FLOAT) AS Density
+	INTO #Columns
+	FROM INFORMATION_SCHEMA.COLUMNS
+	WHERE TABLE_SCHEMA = @TableSchema
+		AND TABLE_NAME = @TableName
+		AND (
+			@ColumnNamePattern IS NULL
+			OR COLUMN_NAME LIKE @ColumnNamePattern
+			)
+
+	DECLARE C CURSOR
+	FOR
+	SELECT ColumnName
+	FROM #Columns;
+
+	DECLARE @ColumnName NVARCHAR(128);
+
+	OPEN C;
+
+	FETCH NEXT
+	FROM C
+	INTO @ColumnName;
+
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		DECLARE @Sql NVARCHAR(max) = '
+	UPDATE #Columns
+	SET
+		DistinctValues = C.DistinctValues,
+		Density = CASE C.Rows WHEN 0 THEN 0 ELSE CAST(C.DistinctValues AS float) / C.Rows END
+	FROM (
+		SELECT
+			COUNT(DISTINCT [{ColumnName}]) AS DistinctValues,
+			COUNT(*) AS Rows
+		FROM
+			[{TableSchema}].[{TableName}]
+	) C
+	WHERE
+		ColumnName = ''{ColumnName}''
+	';
+
+		SET @Sql = REPLACE(@Sql, '{TableSchema}', @TableSchema);
+		SET @Sql = REPLACE(@Sql, '{TableName}', @TableName);
+		SET @Sql = REPLACE(@Sql, '{ColumnName}', @ColumnName);
+
+		EXEC sp_ExecuteSql @Sql;
+
+		FETCH NEXT
+		FROM C
+		INTO @ColumnName;
+	END;
+
+	CLOSE C;
+
+	DEALLOCATE C;
+
+	SELECT *
+	FROM #Columns;
+END
+GO
+
+
