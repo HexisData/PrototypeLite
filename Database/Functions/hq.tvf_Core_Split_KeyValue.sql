@@ -6,7 +6,7 @@ GO
 
 CREATE FUNCTION [dbo].[tvf_Core_Split_KeyValue] (
 	@String NVARCHAR(max),
-	@RowDelimiter NVARCHAR(max),
+	@RowDelimiter NVARCHAR(255),
 	@ColDelimiter NVARCHAR(255)
 	)
 RETURNS TABLE
